@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shein | pay</title>
+    <link rel="stylesheet" href="pay.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+</head>
+<body>
+    <nav>
+        <div class="nav-top">
+            <a href="index.html"><i class="logo"></i></a>
+            <div class="search-bar">
+                <input id="searchinput" type="text" placeholder="search...">
+                <button onclick="search();">
+                    <i class="fas fa-search search-icon"></i> 
+                </button>
+            </div>
+            <div class="nav-icons">
+                <button class="showcopon" onclick="showcopon();"><i class="fas fa-ticket-alt nav-icon"></i></button>
+                <i class="fas fa-user nav-icon"></i>
+                <a href="cart.html" class="cartnav"><i class="fas fa-shopping-cart nav-icon"></i></a>
+                <a href="favourites.html" class="cartnav"><i class="fas fa-heart nav-icon"></i></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="categories">
+                <li> categories <i class="fas fa-chevron-down"></i>
+                    <ul class="categories-dropdown" id="listOfCategories">
+                    </ul>
+                </li>
+            </ul>
+            <div id="listOfCategories-nav">
+                
+                <div id="listOfCategoriesContainer"></div>
+                <div id="scrollLeft"><i class="fas fa-chevron-left"></i></div>
+                <div id="scrollRight"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <hr class="hr">
+    </nav>
+    <main> 
+    <div class="container">
+        <div class="billing-details">
+            <h2>Billing Details</h2>
+            <label for="first-name">First Name*</label>
+            <input type="text" id="first-name" name="first-name" required>
+            
+            <label for="company-name">Company Name</label>
+            <input type="text" id="company-name" name="company-name">
+            
+            <label for="street-address">Street Address*</label>
+            <input type="text" id="street-address" name="street-address" required>
+            
+            <label for="apartment">Apartment, floor, etc.* (optional)</label>
+            <input type="text" id="apartment" name="apartment" required>
+            
+            <label for="town-city">Town/City*</label>
+            <input type="text" id="town-city" name="town-city" required>
+            
+            <label for="phone-number">Phone Number*</label>
+            <input type="text" id="phone-number" name="phone-number" required>
+            
+            <label for="email-address">Email Address*</label>
+            <input type="text" id="email-address" name="email-address" required>
+            
+        </div>
+        
+        <div class="order-summary">
+            <div class="back">
+                <h2>Order Summary</h2>
+                <button onclick="goback();" class="goback"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>   
+                <div class="item"></div>
+            
+            <div class="subtotal">
+                <div>Subtotal:</div>
+                <div id="price"></div>
+            </div>
+            <hr>
+            <div class="shipping">
+                <div>Shipping:</div>
+                <div>Free</div>
+            </div>
+            <hr>
+            <div class="total">
+                <div>Total:</div>
+                <div id="totlePrice"></div>
+            </div>
+            <div class="payment-methods">
+                <label>
+                    <input type="radio" name="payment-method" value="credit-card"> Credit Card
+                </label>
+                <label>
+                    <input type="radio" name="payment-method" value="cash"> Cash on delivery
+                </label>
+            </div>
+            
+            <div id="credit-card-fields" >
+                <div class="credit-card-input">
+                    <label for="card-number">Card Number*</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                <div class="credit-card-row">
+                    <div class="credit-card-input half-width">
+                        <label for="card-expiry">Expiry Date*</label>
+                        <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="credit-card-input half-width">
+                        <label for="card-cvv">CVV*</label>
+                        <input type="text" id="card-cvv" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+            </div>
+            <div class="buttoncopons">
+                <div class="couponcode">
+                    <input class="coponInput" id="coponInput" placeholder="Coupon Code">
+                    <button class="copon" onclick="addCopon();">Apply Coupon</button>
+                </div>
+                <div class="place-order">
+                    <button onclick="sendMail();">Place Order</button>
+                </div>
+             </div>
+        </div>
+    </div>
+    </main>
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <button class="close-btn" onclick="closePopup()">×</button>
+            <div class="title">You got the coupons</div>
+            <div class="coupon">
+                <div class="discount">extra 20% off</div>
+                <div class="code">For an order over 400 NIS</div>
+                <div class="code">code: JEIP2</div>
+                <div class="details">
+                    07:59 08/07/2024 ~ 06:00 01/07/2024<br>
+                    *Applies to selected products only
+                </div>
+            </div>
+            <div class="coupon">
+                <div class="discount">extra 15% off</div>
+                <div class="code">For an order over 300 NIS</div>
+                <div class="code">code: JEIP2</div>
+                <div class="details">
+                    07:59 08/07/2024 ~ 06:00 01/07/2024<br>
+                    *Applies to selected products only
+                </div>
+            </div>
+            <button class="button" onclick="copyCopon()">copy</button>
+            <!--<span id="copied-text" style="display: none;">Copied!</span>-->
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="company-info">
+            <h3>COMPANY INFO</h3>
+            <ul>
+                <li><a href="notFound.html">About SHEIN</a></li>
+                <li><a href="notFound.html">Sustainability</a></li>
+                <li><a href="notFound.html">Fashion Blogger</a></li>
+                <li><a href="notFound.html">Supply Chain</a></li>
+                <li><a href="notFound.html">Careers</a></li>
+                <li><a href="notFound.html">Student Discount</a></li>
+                <li><a href="notFound.html">SHEIN101</a></li>
+            </ul>
+        </div>
+        <div class="help-support">
+            <h3>HELP & SUPPORT</h3>
+            <ul>
+                <li><a href="notFound.html">Shipping Info</a></li>
+                <li><a href="notFound.html">Returns</a></li>
+                <li><a href="notFound.html">Refund</a></li>
+                <li><a href="notFound.html">How To Order</a></li>
+                <li><a href="notFound.html">How To Track</a></li>
+                <li><a href="notFound.html">Size Guide</a></li>
+                <li><a href="notFound.html">SHEIN VIP</a></li>
+                <li><a href="notFound.html">Sell on Shein</a></li>
+            </ul>
+        </div>
+        <div class="customer-care">
+            <h3>CUSTOMER CARE</h3>
+            <ul>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="notFound.html">Payment & Tax</a></li>
+                <li><a href="notFound.html">Bonus Point</a></li>
+            </ul>
+        </div>
+        <div class="social-section">
+            <h3>FIND US ON</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/SHEINOFFICIAL/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sheinofficial/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://mobile.twitter.com/SHEIN_News" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/user/sheinsidevideo" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.pinterest.com/SHEINofficial/" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.snapchat.com/add/sheinofficial" target="_blank" rel="noopener noreferrer"><i class="fab fa-snapchat"></i></a>
+                <a href="https://www.tiktok.com/@shein_official" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/careersite/sheinus" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            </div>
+            
+        </div>
+        
+        
+    </footer>
+    <script src="pay.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style2.css">
+    <title>Shein | cart</title>
+</head>
+<body>
+    <div class="main-content">
+    <nav>
+        <div class="nav-top">
+            <a href="index.html"><i class="logo"></i></a>
+            <div class="search-bar">
+                <input id="searchinput" type="text" placeholder="search...">
+                <button onclick="search();">
+                    <i class="fas fa-search search-icon"></i> 
+                </button>
+            </div>
+            <div class="nav-icons">
+                <button class="showcopon" onclick="showcopon();"><i class="fas fa-ticket-alt nav-icon"></i></button>
+                <i class="fas fa-user nav-icon"></i>
+                <a href="cart.html" class="cartnav"><i class="fas fa-shopping-cart nav-icon"></i></a>
+                <a href="favourites.html" class="cartnav"><i class="fas fa-heart nav-icon"></i></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="categories">
+                <li> Categories <i class="fas fa-chevron-down"></i>
+                    <ul class="categories-dropdown" id="listOfCategories">
+                    </ul>
+                </li>
+            </ul>
+            <div id="listOfCategories-nav">
+                
+                <div id="listOfCategoriesContainer"></div>
+                <div id="scrollLeft"><i class="fas fa-chevron-left"></i></div>
+                <div id="scrollRight"><i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <hr class="hr">
+    </nav>
+    <div class="container">
+        <div class="cart-section">
+            <div class="cart-table-container">
+                <table id="colInCart" class="cart-table">
+                </table>
+                <img src="image8.png" alt="emptyCart" id="emptyCart">
+            </div>
+        </div>
+        <div class="summary-section">
+            <p class="total">Order Summary</p>
+            <p class="total">Total: <span id="totalSum"></span></p>
+            <button id="pay">Pay Now</button>
+        </div>
+        <button onclick="goback();" class="goback"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    </div>
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <button class="close-btn" onclick="closePopup()">×</button>
+            <div class="title">You got the coupons</div>
+            <div class="coupon">
+                <div class="discount">extra 20% off</div>
+                <div class="code">For an order over 400 NIS</div>
+                <div class="code">code: JEIP2</div>
+                <div class="details">
+                    07:59 08/07/2024 ~ 06:00 01/07/2024<br>
+                    *Applies to selected products only
+                </div>
+            </div>
+            <div class="coupon">
+                <div class="discount">extra 15% off</div>
+                <div class="code">For an order over 300 NIS</div>
+                <div class="code">code: JEIP2</div>
+                <div class="details">
+                    07:59 08/07/2024 ~ 06:00 01/07/2024<br>
+                    *Applies to selected products only
+                </div>
+            </div>
+            <button class="button" onclick="copyCopon()">copy</button>
+            <!--<span id="copied-text" style="display: none;">Copied!</span>-->
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="company-info">
+            <h3>COMPANY INFO</h3>
+            <ul>
+                <li><a href="notFound.html">About SHEIN</a></li>
+                <li><a href="notFound.html">Sustainability</a></li>
+                <li><a href="notFound.html">Fashion Blogger</a></li>
+                <li><a href="notFound.html">Supply Chain</a></li>
+                <li><a href="notFound.html">Careers</a></li>
+                <li><a href="notFound.html">Student Discount</a></li>
+                <li><a href="notFound.html">SHEIN101</a></li>
+            </ul>
+        </div>
+        <div class="help-support">
+            <h3>HELP & SUPPORT</h3>
+            <ul>
+                <li><a href="notFound.html">Shipping Info</a></li>
+                <li><a href="notFound.html">Returns</a></li>
+                <li><a href="notFound.html">Refund</a></li>
+                <li><a href="notFound.html">How To Order</a></li>
+                <li><a href="notFound.html">How To Track</a></li>
+                <li><a href="notFound.html">Size Guide</a></li>
+                <li><a href="notFound.html">SHEIN VIP</a></li>
+                <li><a href="notFound.html">Sell on Shein</a></li>
+            </ul>
+        </div>
+        <div class="customer-care">
+            <h3>CUSTOMER CARE</h3>
+            <ul>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="notFound.html">Payment & Tax</a></li>
+                <li><a href="notFound.html">Bonus Point</a></li>
+            </ul>
+        </div>
+        <div class="social-section">
+            <h3>FIND US ON</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/SHEINOFFICIAL/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/sheinofficial/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://mobile.twitter.com/SHEIN_News" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/user/sheinsidevideo" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.pinterest.com/SHEINofficial/" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.snapchat.com/add/sheinofficial" target="_blank" rel="noopener noreferrer"><i class="fab fa-snapchat"></i></a>
+                <a href="https://www.tiktok.com/@shein_official" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/careersite/sheinus" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            </div>
+            
+        </div>
+        
+        
+    </footer>
+    <script src="sriptCart.js"></script>
+</body>
+</html>
