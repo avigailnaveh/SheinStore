@@ -1,14 +1,16 @@
 // localStorage.removeItem("popupuse");
-//    localStorage.removeItem("targetDate");
+    // localStorage.removeItem("targetDate");
 //  localStorage.removeItem("randomInt");
 let popupuse = localStorage.getItem('popupuse') === 'true';
 let currentProduct = null;
 let countOfProduct = 1;
 let arrOfCaregory = [];
 let globalCategory;
-const today = new Date();
-today.setDate(today.getDate() + 1);
-let Tomorrow=today.toISOString();
+
+// const today = new Date();
+// today.setDate(today.getDate() + 1);
+// let Tomorrow=today.toISOString();
+
 //  let targetDate = new Date(localStorage.getItem('targetDate') || Tomorrow);
  let targetDate = new Date(localStorage.getItem('targetDate') || '2024-07-21T17:13:00');
 localStorage.setItem('randomInt', localStorage.getItem('randomInt') || 1);
@@ -210,13 +212,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     if (popupuse === false) {
+        const today = new Date();
+        today.setDate(today.getDate() + 1);
+        let Tomorrow=today.toISOString();
+        targetDate=Tomorrow;
+        localStorage.setItem('targetDate', targetDate.toISOString());
         const popupoverlay = document.getElementById('popupOverlay');
         popupoverlay.style.display = "flex";
         localStorage.setItem('popupuse', 'true');
         popupuse = true;
     }
     
-     fleshselecard();
+    fleshselecard();
     
     fetch('https://dummyjson.com/products/category-list')
         .then(res => res.json())
