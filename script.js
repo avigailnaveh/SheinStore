@@ -1,5 +1,5 @@
-// localStorage.removeItem("popupuse");
-    // localStorage.removeItem("targetDate");
+//  localStorage.removeItem("popupuse");
+    //  localStorage.removeItem("targetDate");
 //  localStorage.removeItem("randomInt");
 let popupuse = localStorage.getItem('popupuse') === 'true';
 let currentProduct = null;
@@ -214,11 +214,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (popupuse === false) {
         const today = new Date();
         today.setDate(today.getDate() + 1);
-        let Tomorrow=today.toISOString();
-        targetDate=Tomorrow;
-        localStorage.setItem('targetDate', targetDate.toISOString());
-        const popupoverlay = document.getElementById('popupOverlay');
-        popupoverlay.style.display = "flex";
+        let tomorrow = today.toISOString();
+        localStorage.setItem('targetDate', tomorrow);
+        const popupOverlay = document.getElementById('popupOverlay');
+        popupOverlay.style.display = "flex";
         localStorage.setItem('popupuse', 'true');
         popupuse = true;
     }
